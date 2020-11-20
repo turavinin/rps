@@ -2,9 +2,11 @@
 const optionsToElect = ['Rock', 'Paper', 'Scissor'];
 // Pattern of Regex to match de options
 const pattern = /^(rock|paper|scissor)$/i;
+// Variables to store the election of the players
 
-let playerPlay = playerSelection();
-let computerPlay = computerSelection();
+// Variables of players count
+let player = 0;
+let computer = 0;
 
 // Function of computer random selection
 function computerSelection() {
@@ -41,5 +43,20 @@ function playerSelection() {
   }
 }
 
-console.log(`Player selection: ${playerPlay}`);
-console.log(`Computer selection: ${computerPlay}`);
+function oneGame(playerChoise, computerChoise) {
+  if (playerChoise == computerChoise) {
+    console.log(`It's a tie!`);
+  } else if (
+    (playerChoise == optionsToElect[0] &&
+      computerChoise == optionsToElect[2]) ||
+    (playerChoise == optionsToElect[1] &&
+      computerChoise == optionsToElect[0]) ||
+    (playerChoise == optionsToElect[2] && computerChoise == optionsToElect[1])
+  ) {
+    console.log(`You win! ${playerChoise} beats ${computerChoise}.`);
+    return (player += 1);
+  } else {
+    console.log(`You lose! ${computerChoise} beats ${playerChoise}.`);
+    return (computer += 1);
+  }
+}
